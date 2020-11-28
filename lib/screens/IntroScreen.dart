@@ -6,6 +6,7 @@ import 'package:shop_client/Util/Enums.dart';
 import 'package:shop_client/model/AppState.dart';
 import 'package:shop_client/model/model.dart';
 import 'package:shop_client/res/Strings.dart';
+import 'package:shop_client/screens/Gallery.dart';
 
 class IntroScreen extends StatefulWidget {
   int position = 0;
@@ -99,13 +100,18 @@ class IntroItem extends StatelessWidget {
   Widget processTitle(){
     if (item.title != '')
       return Text(item.title, style: TextStyles.title,);
-    else return Consumer<AppState>(builder: (context, data, child) =>
+    else return Consumer<AppState>(builder: (context, appState, child) =>
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FlatButton(
             child: Text(Strings.sign_in, style: TextStyles.greenTitle,),
               onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => GalleryScreen()),
+                );
+
                 final snackbar = SnackBar(
                   content: Text('Please, Sign Up!'),
                   backgroundColor: Colors.redAccent,
@@ -123,7 +129,7 @@ class IntroItem extends StatelessWidget {
           FlatButton(
             child: Text(Strings.sign_up, style: TextStyles.greenTitle,),
             onPressed: (){
-
+              appState.signUp();
             },
           ),
         ],

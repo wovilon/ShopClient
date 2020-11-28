@@ -5,13 +5,23 @@ import 'package:shop_client/screens/IntroScreen.dart';
 import 'model/AppState.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: ChangeNotifierProvider(
+  runApp(
+    ChangeNotifierProvider(
         create: (context) => AppState(),
-        child: IntroScreen()
-    ),
-  ));
+        child: MyApp(),
+    )
+  );
 }
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: IntroScreen(),
+    );
+  }
+}
+
 
 /*
 class MyApp extends StatelessWidget {
