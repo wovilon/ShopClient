@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_client/screens/IntroScreen.dart';
+
+import 'model/AppState.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: IntroScreen(),
+    home: ChangeNotifierProvider(
+        create: (context) => AppState(),
+        child: IntroScreen()
+    ),
   ));
 }
 

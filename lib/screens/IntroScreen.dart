@@ -1,7 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shop_client/Styles/TextStyles.dart';
 import 'package:shop_client/Util/Enums.dart';
+import 'package:shop_client/model/AppState.dart';
 import 'package:shop_client/model/model.dart';
 import 'package:shop_client/res/Strings.dart';
 
@@ -97,30 +99,35 @@ class IntroItem extends StatelessWidget {
   Widget processTitle(){
     if (item.title != '')
       return Text(item.title, style: TextStyles.title,);
-    else return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        FlatButton(
-          child: Text(Strings.sign_in, style: TextStyles.greenTitle,),
+    else return Consumer<AppState>(builder: (context, data, child) =>
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FlatButton(
+            child: Text(Strings.sign_in, style: TextStyles.greenTitle,),
+              onPressed: (){
+                final snackbar = SnackBar(
+                  content: Text('Please, Sign Up!'),
+                  backgroundColor: Colors.redAccent,
+                );
+                Scaffold.of(context).showSnackBar(snackbar);
+              },
+          ),
+
+          Padding(padding: EdgeInsets.symmetric(horizontal: 21),
+            child: Container(width: 1, height: 13,
+              color: Color.fromRGBO(160,160,160, 1),
+            ),
+          ),
+
+          FlatButton(
+            child: Text(Strings.sign_up, style: TextStyles.greenTitle,),
             onPressed: (){
 
             },
-        ),
-
-        Padding(padding: EdgeInsets.symmetric(horizontal: 21),
-          child: Container(width: 1, height: 13,
-            color: Color.fromRGBO(160,160,160, 1),
           ),
-        ),
-
-        FlatButton(
-          child: Text(Strings.sign_up, style: TextStyles.greenTitle,),
-          onPressed: (){
-
-          },
-        ),
-      ],
-    );
+        ],
+    ));
   }
 }
 
