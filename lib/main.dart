@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shop_client/screens/IntroScreen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    home: IntroScreen(),
+  ));
 }
 
 /*
