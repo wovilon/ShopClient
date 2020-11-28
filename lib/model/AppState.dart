@@ -8,5 +8,9 @@ class AppState extends ChangeNotifier{
     notifyListeners();
   }
 
+  String localPing(){
+    return 'local ping success';
+  }
+
 
 }
