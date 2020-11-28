@@ -12,4 +12,10 @@ class TextStyles{
       fontFamily: 'Raleway',
       fontSize: 16,
   );
+
+  static const greenTitle = TextStyle(
+    fontFamily: 'Raleway',
+    fontSize: 22,
+    color: Color.fromRGBO(94, 206, 123, 1)
+  );
 }

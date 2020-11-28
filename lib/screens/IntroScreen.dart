@@ -79,7 +79,7 @@ class IntroItem extends StatelessWidget {
       children: [
         Image.asset(item.imgAsset),
         SizedBox(height: 84,),
-        Text(item.title, style: TextStyles.title,),
+        processTitle(),
         SizedBox(height: 32,),
         Padding(
           child: Text(
@@ -90,6 +90,35 @@ class IntroItem extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 50),
         ),
         SizedBox(height: 54,),
+      ],
+    );
+  }
+
+  Widget processTitle(){
+    if (item.title != '')
+      return Text(item.title, style: TextStyles.title,);
+    else return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        FlatButton(
+          child: Text(Strings.sign_in, style: TextStyles.greenTitle,),
+            onPressed: (){
+
+            },
+        ),
+
+        Padding(padding: EdgeInsets.symmetric(horizontal: 21),
+          child: Container(width: 1, height: 13,
+            color: Color.fromRGBO(160,160,160, 1),
+          ),
+        ),
+
+        FlatButton(
+          child: Text(Strings.sign_up, style: TextStyles.greenTitle,),
+          onPressed: (){
+
+          },
+        ),
       ],
     );
   }
